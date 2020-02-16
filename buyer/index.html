@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+    .img-block{
+      display: inline-block;
+      box-shadow: 0 0.75em 3em rgba(50, 50, 50, 0.5);
+      max-width: 45%;
+      align-items: center;
+    }
+    .console {
+      display: inline-block;
+      font-family: monospace,monospace;
+      color: #fff;
+      width: 520px;
+      height: 500px;
+      max-width: 50%;
+      max-height: 300px;
+      overflow-y: auto;
+      margin: 1em 2em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 0.5em;
+      box-shadow: 0 0.75em 3em rgba(50, 50, 50, 0.5);
+      z-index: 100;
+      line-height: 1.5;
+      }
+
+      .console-input {
+      font-family: monospace,monospace;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      min-width: calc(100% - 2em);
+      resize: none;
+      }
+
+      .console-input:before {
+      content: '> ';
+      color: #FC3565;
+      vertical-align: top;
+      }
+
+      .output-cmd:before {
+      content: '> ';
+      color: #FC3565;
+      vertical-align: top;
+      }
+      .output-text:before {
+      content: '> ';
+      color: #5F8787;
+      font-weight: 600 !important;
+      vertical-align: top;
+      }
+
+      .output-text,
+      .output-cmd {
+      width: 100%;
+      display: block;
+      }
+
+      .console-inner {
+      padding: 0.3em 1.1em;
+      }
+
+      .output-text,
+      .output-cmd {
+      display: block;
+      white-space: pre;
+      }
+
+      #outputs div {
+      opacity: 0.85;
+      }
+
+      #outputs div div {
+      color: #46f01d;
+      opacity: 0.8;
+      text-decoration: none;
+      }
+
+      #outputs a {
+      color: #46f01d;
+      opacity: 0.8;
+      text-decoration: underline;
+      }
+
+      .console-inner .output-text#ready {
+      color: #3df5b8;
+      font-style: italic;
+      opacity: 0.75;
+      }
+
+    </style>
+  </head>
+  <body>
+    <script src="https://js.stripe.com/v3"></script>
+    <h1>
+      Data Stream Received by Client
+    </h1>
+      
+    
+      <div class = "img-block">
+        <img id = "image" width="90%" >
+      </div>
+
+      <div id = "box" class='console' display="inline-block">
+        <div id = "here" class='console-inner'>
+          <div id="outputs"></div>
+        </div>
+      </div>
+    
+  
+    <!-- <button
+        style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+        id="checkout-button-sku_GNxSnVRccQPCAk"
+        role="link"
+      >
+        Checkout
+      </button> -->
+
+      <div id="error-message"></div>
+    <div  >
+
+      <ul id="messages" style="list-style-type:none;"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src = "static/bundle.js"></script>
+    
+
+    <script>
+      const sender_seed = 'RAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHUL9RAHUL';
+      const recv_address ='HELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDD';
+      payment_invoice = 'test';
+
+      function printconsole(text){
+        $("#outputs").append("<div class='output-cmd'>" + text + "</div>")
+        $('.console-input').val("")
+        // autosize.update($('textarea'))
+        // var objDiv = document.getElementById("here");
+        // objDiv.scrollTop = objDiv.scrollHeight;
+        // $("#here").scrollIntoView(false);
+      }
+      console.log('about to enter test')
+
+      async function webPay(){
+        const test = await iota.sendTokens(sender_seed, recv_address, 0, payment_invoice);
+        console.log(test);
+        printconsole(test);
+      }
+      //webPay();
+
+      const socket = io.connect('http://localhost:8080')
+      socket.on('image',(image) =>{
+        //console.log('data', image);
+        console.log('images received')
+        const imageElm = document.getElementById('image');
+        imageElm.src = `data:image/jpeg;base64,${image}`
+        //printconsole('Receiving frames..')
+        //$("#outputs").append('test')
+        //socket.emit('test','test');
+      })
+
+       socket.on('DATA_INVOICE',(amount) =>{
+         console.log('DATA_INVOICE');
+         printconsole('***DATA_INVOICE*** Processing...');
+        // transaction_hash = await iota.sendTokens(sender_seed, recv_address, 0, 'test payment');
+        // setTimeout(function(){
+        //   console.log('paid',amount);
+        //   socket.emit('paid',amount);
+        // },500);
+       })
+
+       socket.on('STRIPE_INVOICE',(id) =>{
+        console.log('Using Stripe:',id);
+        printconsole('***DATA_INVOICE*** Please click checkout...');
+        (function() {
+            var stripe = Stripe('pk_test_XhC9cMRDNNqdkBVtHwzgYTQa00ov5gDmmN');
+
+            // var checkoutButton = document.getElementById('checkout-button-sku_GNxSnVRccQPCAk');
+            // checkoutButton.addEventListener('click', function () {
+              // When the customer clicks on the button, redirect
+              // them to Checkout.
+              stripe.redirectToCheckout({
+                sessionId: id
+
+                // Do not rely on the redirect to the successUrl for fulfilling
+                // purchases, customers may not always reach the success_url after
+                // a successful payment.
+                // Instead use one of the strategies described in
+                // https://stripe.com/docs/payments/checkout/fulfillment
+                
+              })
+              .then(function (result) {
+                socket.emit('stripe_paid','somthing');
+                socket.to('lobby').emit('stripe_paid','somthing');
+                io.emit('stripe_paid','something');
+                console.log(result);
+                if (result.error) {
+                  // If `redirectToCheckout` fails due to a browser or network
+                  // error, display the localized error message to your customer.
+                  var displayError = document.getElementById('error-message');
+                  displayError.textContent = result.error.message;
+                }
+                
+              });
+            // });
+          })();
+        })
+
+       socket.on('PAYMENT_ACK',(hash) =>{
+         console.log('PAYMENT_ACK');
+         printconsole('*** Made Payment Hash:'+ hash);
+         printconsole('* Resuming...');
+         
+      })
+
+    </script>
+  </body>
+</html>

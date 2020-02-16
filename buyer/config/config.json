@@ -1,0 +1,21 @@
+{
+    "client": "buyer",
+    "data":{
+        "K": "250",
+        "price":"1"
+    },
+    "payment":{
+        "currency": "eth",
+        "account": "0x8Cee03568EfE66D2F4046a04ea36c413394c6951",
+        "privateKey":"782ca5bcd50a61993a3077ac1138e8270800e26239fefc8611f79d35e361c461",
+        "CONTRACT_ADDRESS" : "0x25F4704932D83282E266BcE1d05021846ba262d6",
+        "HTTP_SERVER" : "HTTP://127.0.0.1:7545"
+    },
+    "record":{
+        "platform": "iota",
+        "account":"0x8Cee03568EfE66D2F4046a04ea36c413394c6951",
+        "privateKey":"782ca5bcd50a61993a3077ac1138e8270800e26239fefc8611f79d35e361c461",
+        "HTTP_SERVER" : "HTTP://127.0.0.1:7545"
+    }
+
+}

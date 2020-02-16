@@ -1,0 +1,24 @@
+{
+    "client": "seller",
+    "data":{
+        "K": 250,
+        "price":1
+    },
+    "payment":{
+        "currency": "iota",
+        "account": "0xFb05Aab59e5d1EE9F62B7eA0a349Dcc402f2f8f7",
+        "privateKey":"ae3439bcdc8d961030684468caf5f92ff71dff4ec4f68e86b7cb137717a9ed0a",
+        "CONTRACT_ADDRESS" : "0x25F4704932D83282E266BcE1d05021846ba262d6",
+        "HTTP_SERVER" : "HTTP://127.0.0.1:7545",
+        "STRIPE_PUBLISHABLE_KEY": "pk_test_XhC9cMRDNNqdkBVtHwzgYTQa00ov5gDmmN",
+        "STRIPE_SECRET_KEY": "sk_test_l89745UZ60gTEBT0pqA5wuTm00KlD5J0tF",
+        "STRIPE_WEBHOOK_SECRET":"whsec_9n9JP2ivzPnyG1dZVZCcd3FPR5fGRnHm",
+        "DOMAIN":"http://localhost:4242"
+    },
+    "record":{
+        "platform": "iota",
+        "account":"0xFb05Aab59e5d1EE9F62B7eA0a349Dcc402f2f8f7",
+        "privateKey":"ae3439bcdc8d961030684468caf5f92ff71dff4ec4f68e86b7cb137717a9ed0a",
+        "HTTP_SERVER" : "HTTP://127.0.0.1:7545"
+    }
+}
