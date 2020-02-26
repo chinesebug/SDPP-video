@@ -5,7 +5,7 @@ const config = require('../utils/loadConfig');
 const bodyParser = require('body-parser');
 // const env = require("dotenv").config({ path: "../config/.env" });
 // console.log('key',env.STRIPE_SECRET_KEY)
-const stripe = require("stripe")(config.payment.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(config.payment.stripe.STRIPE_SECRET_KEY);
 
 app.listen(4242, () => console.log(`webhook listening on port ${4242}!`));
 
@@ -58,7 +58,7 @@ function stripe_webhook(socket, resolve){
         let event;
 
         try {
-          event = stripe.webhooks.constructEvent(request.body, sig, config.payment.STRIPE_WEBHOOK_SECRET);
+          event = stripe.webhooks.constructEvent(request.body, sig, config.payment.stripe.STRIPE_WEBHOOK_SECRET);
         } catch (err) {
           return response.status(400).send(`Webhook Error: ${err.message}`);
         }

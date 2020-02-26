@@ -6,7 +6,7 @@
 
   const K = config.data.K;
   const cost = config.data.cost;
-  const account = config.payment.account;
+  const account = config.payment.eth.account;
   //
 
   function pay(payTo, amount){
@@ -33,7 +33,7 @@
         data: 'SDPP_payment'
       }
       // sign the transaction and serialize
-      PVK = new Buffer.from(config.payment.privateKey, 'hex')
+      PVK = new Buffer.from(config.payment.eth.privateKey, 'hex')
       const tx = new Tx(rawTx);
       tx.sign(PVK);
       const serializedTx = tx.serialize();

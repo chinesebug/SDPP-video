@@ -9,7 +9,21 @@
         "account": "0x8Cee03568EfE66D2F4046a04ea36c413394c6951",
         "privateKey":"782ca5bcd50a61993a3077ac1138e8270800e26239fefc8611f79d35e361c461",
         "CONTRACT_ADDRESS" : "0x25F4704932D83282E266BcE1d05021846ba262d6",
-        "HTTP_SERVER" : "HTTP://127.0.0.1:7545"
+        "HTTP_SERVER" : "HTTP://127.0.0.1:7545",
+        "iota":{
+            "address":"HELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDHELLOWORLDD",
+            "seed": "RAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHULRAHUL9RAHUL"
+        },
+        "eth":{
+            "account": "0x8Cee03568EfE66D2F4046a04ea36c413394c6951",
+            "privateKey":"782ca5bcd50a61993a3077ac1138e8270800e26239fefc8611f79d35e361c461"
+        },
+        "stripe":{
+            "STRIPE_PUBLISHABLE_KEY": "pk_test_XhC9cMRDNNqdkBVtHwzgYTQa00ov5gDmmN",
+            "STRIPE_SECRET_KEY": "sk_test_l89745UZ60gTEBT0pqA5wuTm00KlD5J0tF",
+            "STRIPE_WEBHOOK_SECRET":"whsec_9n9JP2ivzPnyG1dZVZCcd3FPR5fGRnHm",
+            "DOMAIN":"http://localhost:4242"
+        }
     },
     "record":{
         "platform": "iota",

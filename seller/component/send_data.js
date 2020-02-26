@@ -22,9 +22,9 @@ function get_order(socket){
           config.payment.currency = 'usd';
           console.log(config.payment.currency)
         }
-          
+        
         var secret_key_encrypted=crypt.enc_pubKey(encrypt_public_key);
-        socket.emit('session_key', {key:secret_key_encrypted, address: config.payment.account});
+        socket.emit('session_key', {key:secret_key_encrypted, address: config.payment[config.payment.currency].account});
     })
 }
 

@@ -6,7 +6,7 @@ const config = require('./loadConfig');
 const web3 = new Web3(new Web3.providers.HttpProvider(config.payment.HTTP_SERVER));
 
 // web3.eth.defaultAccount = seller_config.account1;
-web3.eth.defaultAccount = config.payment.account;
+web3.eth.defaultAccount = config.payment.eth.account;
 
 web3.eth.net.isListening()
     .then(console.log("Listening: web3"))
