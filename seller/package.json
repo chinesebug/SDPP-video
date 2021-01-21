@@ -14,7 +14,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "get-video-duration": "^1.0.3",
     "mongodb": "^3.4.1",
-    "socket.io": "^2.1.1",
+    "socket.io": "^2.4.0",
     "stripe": "^7.1.0"
   },
   "author": "Matt Shi",
