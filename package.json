@@ -10,7 +10,7 @@
     "@ffmpeg-installer/ffmpeg": "^1.0.19",
     "@iota/core": "^1.0.0-beta.21",
     "browserify": "^16.5.0",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "fluent-ffmpeg": "^2.1.2",
     "socket.io": "^2.1.1"
   },
